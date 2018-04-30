@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DOP Payment</title>
+</head>
+
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cards-accept.bm.pl/integration/checkout.js"></script>
+
+  <script>
+
+    PayBmCheckout.transactionSuccess = function (status) {
+      console.log('transactionSuccess');
+      console.log(status);
+      window.postMessage(JSON.stringify(status))
+    };
+
+    PayBmCheckout.transactionDeclined = function (status) {
+      console.log('transactionDeclined');
+      console.log(status);
+      window.postMessage(JSON.stringify(status))
+    };
+
+    PayBmCheckout.transactionError = function (status) {
+      console.log('transactionError');
+      console.log(status);
+      window.postMessage(JSON.stringify(status))
+    };
+
+    function findGetParameter(parameterName) {
+      var result = null,
+        tmp = [];
+      location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+      return result;
+    }
+
+
+    $(function () {
+      var paymentUrl = findGetParameter('paymentUrl')
+      console.log(paymentUrl)
+      // PayBmCheckout.transactionStartByUrl("https://pay-accept.bm.pl/payment/continue/96IU8TFG/X8I9279F");
+      PayBmCheckout.transactionStartByUrl(paymentUrl);
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>
