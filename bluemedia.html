@@ -9,7 +9,7 @@
 <body>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cards-accept.bm.pl/integration/checkout.js"></script>
+  <script src="checkout.js"></script>
 
   <script>
 
@@ -47,8 +47,7 @@
 
     $(function () {
       var paymentUrl = findGetParameter('paymentUrl')
-      console.log(paymentUrl)
-      // PayBmCheckout.transactionStartByUrl("https://pay-accept.bm.pl/payment/continue/96IU8TFG/X8I9279F");
+      alert(paymentUrl)
       PayBmCheckout.transactionStartByUrl(paymentUrl);
     });
 
