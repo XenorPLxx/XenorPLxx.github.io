@@ -163,9 +163,9 @@ window.PayBmCheckout = (function () {
             closePaymentView();
             self.transactionError.apply(this, [eventData]);
 
-        } else {
-            closePaymentView();
-            self.transactionError.apply(this, [{status: statuses.generalError.name, message: "unknown postMessage event"}]);
+        // } else {
+            // closePaymentView();
+            // self.transactionError.apply(this, [{status: statuses.generalError.name, message: "unknown postMessage event"}]);
         }
     });
 
