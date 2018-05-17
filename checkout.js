@@ -107,11 +107,11 @@ window.PayBmCheckout = (function () {
     }
 
     function openPaymentView(url) {
-        if (browserDetector.isMobile()) {
-            browserView = PayBmMobileView(url);
-            browserView.open();
-            return;
-        }
+        // if (browserDetector.isMobile()) {
+            // browserView = PayBmMobileView(url);
+            // browserView.open();
+            // return;
+        // }
         browserView = PayBmDesktopView(url);
         browserView.open();
     }
